@@ -1,7 +1,25 @@
 // SPACE DATA EXERCISE 8
 // Return a Planet by a given moon name
 //  must have destructured parameters
-export function findPlanetByMoon({ planets, moonName }) {}
+
+import { Planet } from "../data/data";
+
+interface PlanetFilter {
+    planets: Planet[];
+    moonName: string;
+}
+
+export function findPlanetByMoon({ planets, moonName }: PlanetFilter) {
+    const lowerCaseMoonName = moonName.toLowerCase();
+
+    const planetWithMoon: Planet | undefined = planets.find((planet: Planet) => {
+        return planet.moons?.some(moon => moon.toLowerCase() === lowerCaseMoonName);
+    });
+
+    return planetWithMoon;
+}
+
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"

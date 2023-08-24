@@ -1,4 +1,41 @@
-export const data = {
+export interface MassData {
+  massValue: number;
+  massExponent: number;
+}
+
+export interface VolData {
+  volValue: number;
+  volExponent: number;
+}
+
+export interface Moon {
+  name: string;
+}
+
+export interface Planet {
+  id: string;
+  name: string;
+  isPlanet: true;
+  mass: MassData;
+  vol: VolData;
+  gravity: number;
+  avgTemp: number;
+  moonsCount?: number;
+  moons?: string[];
+}
+
+export interface Asteroid {
+  name: string;
+  discoveryYear: number;
+  orbitalPeriod: number;
+}
+
+export interface AllData {
+  planets: Planet[];
+  asteroids: Asteroid[];
+}
+
+export const data: AllData = {
   planets: [
     {
       id: "uranus",

@@ -2,7 +2,14 @@
 // Return an array of all Planets' average temperatures
 // Return example: [1, 2, ... , N]
 
-export function getAllAverageTemperatures(planets) {}
+import { Planet } from "../data/data";
+
+export function getAllAverageTemperatures(planets: Planet[]) {
+    const planetAvgTemps: number[] = planets.map((planet: Planet) => {
+        return planet.avgTemp;
+    })
+    return planetAvgTemps;
+}
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"

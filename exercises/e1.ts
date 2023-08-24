@@ -2,7 +2,16 @@
 // Return an array of all Planets' names
 // Return example: ['name1', 'name2', ... , 'nameN']
 
-export function getPlanetNames(planets) {}
+import { Planet } from "../data/data";
+
+export function getPlanetNames(planets: Planet[]) {
+    const planetNames: string[] = planets.map((planet: Planet) => {
+        return planet.name;
+    });
+
+    return planetNames; // Don't forget to return the array of planet names
+}
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-1"
