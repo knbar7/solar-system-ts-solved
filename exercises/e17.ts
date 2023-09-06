@@ -1,45 +1,37 @@
-type ArrayObject = {
-    name: string,
-    age: number,
-}
-type ArrayInput = ArrayObject[]
-type Callback = (input: ArrayObject | undefined) => ArrayObject;
+export function minBy<T>(arr: T[], callback: (item: T) => number): T | undefined {
+  if (arr.length === 0) {
+    return undefined; // Return null for an empty array
+  }
 
-export const minBy = (array: ArrayInput, cb: Callback) => {
-    if (array.length === 0) {
-      return undefined;
-    } else if (array.length) {
-        let minValue = cb(array[0]);
-        let minItem = array[0];
-    
-        for (let i = 1; i < array.length; i++) {
-        const value = cb(array[i]);
-        if (value < minValue) {
-            minValue = value;
-            minItem = array[i];
-        }
-        }
-    
-        return minItem;
+  let minValue = callback(arr[0] as T); // Type assertion
+  let minElement = arr[0] as T; // Type assertion
+
+  for (let i = 1; i < arr.length; i++) {
+    const value = callback(arr[i] as T); // Type assertion
+    if (value < minValue) {
+      minValue = value;
+      minElement = arr[i] as T; // Type assertion
     }
-  };
-  
-  export const maxBy = (array: ArrayInput, cb: Callback) => {
-    if (array.length === 0) {
-      return undefined;
+  }
+
+  return minElement;
+}
+
+export function maxBy<T>(arr: T[], callback: (item: T) => number): T | undefined {
+  if (arr.length === 0) {
+    return undefined; // Return null for an empty array
+  }
+
+  let maxValue = callback(arr[0] as T); // Type assertion
+  let maxElement = arr[0] as T; // Type assertion
+
+  for (let i = 1; i < arr.length; i++) {
+    const value = callback(arr[i] as T); // Type assertion
+    if (value > maxValue) {
+      maxValue = value;
+      maxElement = arr[i] as T; // Type assertion
     }
-  
-    let maxValue = cb(array[0]);
-    let maxItem = array[0];
-  
-    for (let i = 1; i < array.length; i++) {
-      const value = cb(array[i]);
-      if (value > maxValue) {
-        maxValue = value;
-        maxItem = array[i];
-      }
-    }
-  
-    return maxItem;
-  };
-  
+  }
+
+  return maxElement;
+}
