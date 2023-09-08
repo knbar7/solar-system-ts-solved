@@ -5,11 +5,9 @@
 import { Planet } from "../data/data";
 
 export function getAllAverageTemperatures(planets: Planet[]) {
-    const planetAvgTemps: number[] = planets.map((planet: Planet) => {
-        return planet.avgTemp;
-    })
-    return planetAvgTemps;
+  return planets.map(planet => planet.avgTemp);
 }
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"

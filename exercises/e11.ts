@@ -3,19 +3,10 @@
 
 import { Planet } from "../data/data";
 
-// include planets with 0 moons
+// Include planets with 0 moons or fewer than 10 moons
 export function lowMoonsPlanets(planets: Planet[]) {
-    const fewMoonPlanets: Planet[] = planets.filter((planet: Planet) => {
-        if (!planet.moons) {
-            return true;
-        } else if (typeof planet.moonsCount === "number") {
-            return planet.moonsCount < 10;
-        }
-        return false;
-    });
-    return fewMoonPlanets;
-}
-
+    return planets.filter(planet => !planet.moons || (planet.moonsCount !== undefined && planet.moonsCount < 10));
+  }
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

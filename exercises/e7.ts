@@ -4,9 +4,9 @@ import { Planet } from "../data/data";
 
 // Return an array of all Planets names that have moons
 export function getPlanetsWithMoons(planets: Planet[]) {
-    const planetsWithMoons: Planet[] = planets.filter((planet: Planet) => planet.moons );
-    const planetNames: String[] = planetsWithMoons.map((planet: Planet) => planet.name )
-    return planetNames;
+    return planets
+        .filter((planet: Planet) => planet.moons )
+        .map((planet: Planet) => planet.name );
 }
 
 // === TEST YOURSELF ===

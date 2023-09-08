@@ -6,30 +6,23 @@
 import { Asteroid } from "../data/data";
 
 export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
-    let discoveryYears: number[] = [];
-    asteroids.forEach((asteroid: Asteroid) => {
-        let discoveryYear: number = asteroid.discoveryYear;
-        discoveryYears.push(discoveryYear);
-    });
+  const yearFrequencies = new Map<number, number>();
+  let maxYear: number | undefined;
+  let maxQuantity = 0;
 
-    const yearFrequencies = new Map<number, number>(); 
+  asteroids.forEach((asteroid) => {
+    const discoveryYear = asteroid.discoveryYear;
+    const currentQuantity = (yearFrequencies.get(discoveryYear) || 0) + 1;
 
-    discoveryYears.forEach((year: number) => {
-        yearFrequencies.set(year, (yearFrequencies.get(year) || 0) + 1);
-    });
+    yearFrequencies.set(discoveryYear, currentQuantity);
 
-    let maxYear: number | undefined;
-    let maxQuantity = 0;
+    if (currentQuantity > maxQuantity) [maxYear, maxQuantity] = [discoveryYear, currentQuantity];
+  });
 
-    yearFrequencies.forEach((quantity, year) => {
-        if (quantity > maxQuantity) {
-            maxYear = year;
-            maxQuantity = quantity;
-        }
-    });
-
-    return maxYear;
+  return maxYear;
 }
+
+
 
 
 // === TEST YOURSELF ===

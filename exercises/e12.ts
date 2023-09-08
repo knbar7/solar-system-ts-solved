@@ -1,19 +1,14 @@
 // SPACE DATA EXERCISE 12
 // Return the sum of all moons for all planets
 
-import { AllData, Planet } from "../data/data";
+import { AllData } from "../data/data";
 
 // Return example: 42
 export const allPlanetsMoonsCount = (data: AllData) => {
-    const planets: Planet[] = data.planets;
-    let moonCount: number = 0;
-    planets.forEach((planet: Planet) => {
-        if (typeof planet.moonsCount === "number") {
-            moonCount += planet.moonsCount;
-        }
-    });
-    return moonCount;
+    return data.planets.reduce((acc, planet) => acc + (planet.moons?.length || 0), 0);
 };
+
+
 
 
 // === TEST YOURSELF ===

@@ -5,19 +5,17 @@
 import { Planet } from "../data/data";
 
 // Note: This input should be destructured from the function parameter
-interface PlanetFilter{
-  planets: Planet[],
-  greaterThanOrEqualTo: number,
+interface PlanetFilter {
+  planets: Planet[];
+  greaterThanOrEqualTo: number;
 }
 
-export function getPlanetNamesWithMassValue({
-  planets,
-  greaterThanOrEqualTo,
-}: PlanetFilter) {
-  const filteredPlanets: Planet[] = planets.filter((planet: Planet) => planet.mass.massValue >= greaterThanOrEqualTo);
-  const filteredPlantetsNames: String[] = filteredPlanets.map((planet: Planet) => planet.name);
-  return filteredPlantetsNames;
+export function getPlanetNamesWithMassValue({ planets, greaterThanOrEqualTo }: PlanetFilter) {
+  return planets
+    .filter(planet => planet.mass.massValue >= greaterThanOrEqualTo)
+    .map(planet => planet.name);
 }
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-5"

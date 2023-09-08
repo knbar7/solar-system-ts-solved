@@ -4,9 +4,11 @@
 import { Planet } from "../data/data";
 
 export function getPlanetsWithNoMoons(planets: Planet[]) {
-    const noMoonPlanets: Planet[] = planets.filter((planet: Planet) => !planet.moons);
-    return noMoonPlanets;
+    return planets
+        .filter(planet => !planet.moons);
 }
+
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-15"

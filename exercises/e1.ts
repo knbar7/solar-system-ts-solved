@@ -5,11 +5,9 @@
 import { Planet } from "../data/data";
 
 export function getPlanetNames(planets: Planet[]) {
-    const planetNames: string[] = planets.map((planet: Planet) => {
+    return planets.map((planet) => {
         return planet.name;
-    });
-
-    return planetNames; // Don't forget to return the array of planet names
+    })
 }
 
 

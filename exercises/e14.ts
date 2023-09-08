@@ -5,11 +5,9 @@
 import { Asteroid } from "../data/data";
 
 export function getOrbitalPeriodsSum(asteroids: Asteroid[]) {
-    let orbitalSum = 0;
-    asteroids.map((asteroid: Asteroid) => {
-        orbitalSum += asteroid.orbitalPeriod;
-    })
-    return orbitalSum;
+    return asteroids.reduce((acc, asteroid) => 
+        acc + asteroid.orbitalPeriod
+    , 0)
 }
 
 // === TEST YOURSELF ===

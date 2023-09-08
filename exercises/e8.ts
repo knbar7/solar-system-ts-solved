@@ -10,13 +10,9 @@ interface PlanetFilter {
 }
 
 export function findPlanetByMoon({ planets, moonName }: PlanetFilter) {
-    const lowerCaseMoonName = moonName.toLowerCase();
-
-    const planetWithMoon: Planet | undefined = planets.find((planet: Planet) => {
-        return planet.moons?.some(moon => moon.toLowerCase() === lowerCaseMoonName);
+    return planets.find((planet) => {
+        return planet.moons?.some(moon => moon.toLowerCase() === moonName.toLowerCase());
     });
-
-    return planetWithMoon;
 }
 
 

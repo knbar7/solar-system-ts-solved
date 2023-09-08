@@ -10,9 +10,7 @@ interface AsteroidFilter{
 }
 
 export function getAsteroidDataByName({ allData, asteroidName }: AsteroidFilter) {
-    const asteroids: Asteroid[] = allData.asteroids;
-    const foundAsteroid: Asteroid | undefined = asteroids.find((asteroid: Asteroid) => asteroid.name === asteroidName);
-    return foundAsteroid;
+    return allData.asteroids.find((asteroid) => asteroid.name === asteroidName);
 }
 
 // === TEST YOURSELF ===
